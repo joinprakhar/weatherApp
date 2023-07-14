@@ -17,7 +17,8 @@ class App extends Component {
         citi: "",
         latitude: 28.6139,
         longitude: 77.2090,
-        error: null
+        error: null,
+        condition: null
     }
 
 
@@ -78,10 +79,11 @@ class App extends Component {
         });
         await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=546b7daeb21aad1b7696e3203df93a2e&units=${this.state.tempreture}`)
             .then((response) => response.json())
-            .then((data) => {
+            .then((datas) => {
                 this.setState({
-                    data: data,
-                    isLoading: false
+                    data: datas,
+                    isLoading: false,
+                    condition: datas?.weather
                 });
             })
             .catch((error) => {
@@ -135,7 +137,9 @@ class App extends Component {
                             this.state.isLoading ?
                                 <div className='error-panel' /> :
                                 <div className="is-loading" /> :
-                            <WeatherReport weatherData={this.state.data} units={this.state.temp} />}
+                            <WeatherReport weatherData={this.state.data} 
+                            units={this.state.temp}
+                            condition={this.state.condition} />}
                     </div>
                 </div>
 

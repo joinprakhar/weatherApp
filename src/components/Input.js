@@ -11,6 +11,14 @@ const Input = ({getCity}) => {
     }
   };
 
+  const handle = (e) => {
+    if(place === "") {
+      alert("Please enter a city");
+    }
+      getCity(place);
+      setPlace("");
+  };
+
   return (
     <>
       <span className="input-box">
@@ -21,7 +29,9 @@ const Input = ({getCity}) => {
           onChange={(e)=>setPlace(e.target.value)}
           onKeyUp={handleKeyPress}
           placeholder="Search city"
+          
         />
+        <button className="button" onClick={handle}>Search</button>
       </span>
     </>
   );

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types';
 
-const WeatherReport = ({ weatherData, units }) => {
-//{weatherData.weather?.main}
+const WeatherReport = ({ weatherData, units, conditions }) => {
+
+  // useEffect(() => {
+  //   const weather = { ...weatherData.weather }
+  //   console.log(weather)
+  // })
+  
+  //console.log(conditions[0])
+  
   return (
     <div className="weather-report">
       <div className="main_panel">
@@ -10,7 +17,9 @@ const WeatherReport = ({ weatherData, units }) => {
         <h2 className="big">{weatherData.name}{" "}{weatherData.sys?.country}</h2>
         <h3 className="conditions">
           {weatherData?.main?.temp}&#176;{units} |
-          {weatherData?.main?.feels_like}&#176;{units} </h3>
+            {weatherData?.main?.feels_like}&#176;{units} <br />
+            
+             </h3>
         </div>
         <img src="https://w7.pngwing.com/pngs/530/127/png-transparent-weather-forecasting-national-weather-service-weather-radar-weather-atmosphere-cloud-weather-forecasting-thumbnail.png" alt="fffaa" />
       </div>
